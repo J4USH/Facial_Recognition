@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 
-path = 'ImageDataset'
+path = 'FacialRecognition\ImageDataset'
 images = []
 classNames = []
 alredy_attended = []
@@ -58,6 +58,7 @@ print(encodeListKnown)
 
 
 cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_POS_FRAMES,0)
 cap.set(3, 640)
 cap.set(4, 480)
 
@@ -76,8 +77,8 @@ while True:
     success, img = cap.read()
     
   
-    cv2.namedWindow("Merge", cv2.WINDOW_NORMAL)
-    cv2.resizeWindow("Merge", 700, 800)
+    cv2.namedWindow("FacialDetection", cv2.WINDOW_NORMAL)
+    cv2.resizeWindow("FacialDetection", 700, 800)
     # imgS = cv2.resize(img, (0, 0), None, 0.25, 0.25)
     img_chc=cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     facesCurFrame = face_recognition.face_locations(img_chc)
@@ -97,7 +98,7 @@ while True:
             cv2.putText(img, name, ( x1 + 6,y2 - 6 ), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
             # markAttendance(name, alredy_attended,marked)
 
-    cv2.imshow("Merge",img)
+    cv2.imshow("FacialDetection",img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
