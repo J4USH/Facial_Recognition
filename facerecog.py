@@ -4,8 +4,10 @@ import face_recognition
 import os
 from datetime import datetime
 
+"""Prototype Facial Recognition"""
 
 
+"""Start of Database Code Replacement"""
 path = 'FacialRecognition\ImageDataset'
 images = []
 classNames = []
@@ -19,8 +21,11 @@ for cl in myList:
     images.append(curImg)
     classNames.append(os.path.splitext(cl)[0])
 print(classNames)
+"""End of DataBase Code Replacement"""
 
 
+
+"""Getting the Encoding of the Images"""
 def findEncodings(images):
     encodeList = []
     for img in images:
@@ -31,6 +36,8 @@ def findEncodings(images):
 
 
 
+
+"""Marking Attendance"""
 
 # def markAttendance(name,alredy_attended,marked):
 #     with open('Attendance.csv', 'r+') as f:
@@ -52,27 +59,22 @@ def findEncodings(images):
 #                 print(("ALREADY MARKED"))
 #                 marked = False
 
+"""Sending the Image from the Database of Encoding Function"""
 encodeListKnown = findEncodings(images)
 print(encodeListKnown)
 
 
 
-cap = cv2.VideoCapture(0)
+
+"""Start of Video Capture"""
+cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 cap.set(cv2.CAP_PROP_POS_FRAMES,0)
+cap.set(cv2.CAP_PROP_BUFFERSIZE, 0)
 cap.set(3, 640)
 cap.set(4, 480)
 
 
-
-
-
-
-
-
-
-
-
-
+"""Turn the Webcam/Cam On"""
 while True:
     success, img = cap.read()
     
@@ -83,7 +85,7 @@ while True:
     img_chc=cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     facesCurFrame = face_recognition.face_locations(img_chc)
     encodesCurFrame = face_recognition.face_encodings(img_chc, facesCurFrame)
-
+    """Find the faces and checking if the face is in the Database """
     for encodeFace, faceLoc in zip(encodesCurFrame, facesCurFrame):
         matches = face_recognition.compare_faces(encodeListKnown, encodeFace)
         faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
@@ -92,12 +94,12 @@ while True:
             name = classNames[matchIndex].upper()
             y1, x2, y2, x1 = faceLoc
             print(faceLoc)
-            
+            """Print the face which the model has recognised"""
             cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
             cv2.rectangle(img, ( x1,y2 - 35,), (x2,y2), (0, 255, 0), cv2.FILLED)
             cv2.putText(img, name, ( x1 + 6,y2 - 6 ), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
             # markAttendance(name, alredy_attended,marked)
-
+    """Pressing Q key to terminate the cam and stopping the program"""
     cv2.imshow("FacialDetection",img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
