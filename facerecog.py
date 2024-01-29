@@ -8,7 +8,7 @@ from datetime import datetime
 
 
 """Start of Database Code Replacement"""
-path = 'FacialRecognition\ImageDataset'
+path = 'D:/CODE/FacialRecognition/ImageDataset'
 images = []
 classNames = []
 alredy_attended = []

@@ -1,6 +1,7 @@
 import tkinter
 import customtkinter
 from PIL import ImageTk, Image
+import os
 
 class LoginApp:
     def __init__(self):
@@ -21,7 +22,7 @@ class LoginApp:
         self.frame = customtkinter.CTkFrame(master=self.l1, width=320, height=360, corner_radius=15)
         self.frame.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 
-        self.img3 = ImageTk.PhotoImage(Image.open("FacialRecognition/Resources/Venuratech.jpg"))
+        self.img3 = ImageTk.PhotoImage(Image.open("FacialRecognition/Resources/Venuratech.png"))
 
         self.image = customtkinter.CTkLabel(master=self.frame, image=self.img3, text="")
         self.image.place(x=35, y=3)
@@ -48,12 +49,8 @@ class LoginApp:
     def button_function(self):
         if (self.entry1.get() == "Agnibha" and self.entry2.get() == "password"):
             self.app.destroy()  # destroy current window and creating new one
-            w = customtkinter.CTk()
-            w.geometry("1280x720")
-            w.title('Welcome')
-            l1 = customtkinter.CTkLabel(master=w, text="Home Page", font=('Century Gothic', 60))
-            l1.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
-            w.mainloop()
+            os.system('python FacialRecognition/Homepage.py')
+           
         else:
             self.l4.configure(text="Wrong Password/Username", fg_color=("red"))
 
