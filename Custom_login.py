@@ -1,4 +1,5 @@
 import tkinter
+from CTkMessagebox import CTkMessagebox
 import customtkinter
 from PIL import ImageTk, Image
 import os
@@ -36,7 +37,7 @@ class LoginApp:
         self.entry2 = customtkinter.CTkEntry(master=self.frame, width=220, placeholder_text='Password', show="*")
         self.entry2.place(x=50, y=165)
 
-        self.l3 = customtkinter.CTkLabel(master=self.frame, text="Forget password?", font=('Century Gothic', 12))
+        self.l3 = customtkinter.CTkButton(master=self.frame, text="Forget password?", font=('Century Gothic', 12),command=self.forgetPassword,hover=False)
         self.l3.place(x=155, y=195)
 
         # Create custom button
@@ -53,6 +54,15 @@ class LoginApp:
            
         else:
             self.l4.configure(text="Wrong Password/Username", fg_color=("red"))
+
+
+
+    def forgetPassword(self):
+        CTkMessagebox(title="Warning",icon='warning', message="Please contact your administrator for the password")
+        
+
+
+
 
 
 if __name__ == "__main__":

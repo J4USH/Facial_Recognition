@@ -4,7 +4,7 @@ from datetime import datetime
 import time
 
 def capture_photos():
-    path = 'ImageDataset'
+    path = 'FacialRecognition/ImageDataset'
     capture_count = 0
 
     # Create a new folder inside ImageDataset for the captured photos
@@ -108,5 +108,4 @@ if __name__ == "__main__":
     # Run the function to capture photos and get the folder path
     captured_folder_path = capture_photos()
 
-    if captured_folder_path:
-        print(f'Captured photos stored in: {captured_folder_path}')
+    os.system('python FacialRecognition/encoding.py')

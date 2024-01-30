@@ -81,6 +81,8 @@ class StatusApp:
         return False
 
     def connect(self):
+        self.check_button.configure(text="Checking...")
+        self.window.update()
         if self.is_connected():
             self.status_label.configure(text="✔️Connected to The Internet")
             self.available_net = True
