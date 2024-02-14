@@ -125,5 +125,5 @@ if __name__ == "__main__":
     captured_folder_path = capture_photos()
 
     
-    os.startfile('encoding.exe')
+    os.startfile('encoding.py')
     

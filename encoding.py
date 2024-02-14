@@ -343,7 +343,7 @@ def process_folder(folder_path):
                     except IndexError:
                         print(f'No face detected in {image_path}')
                         shutil.rmtree(folder_path) 
-                        os.startfile('registration_haar.exe')
+                        os.startfile('registration_haar.py')
         
 
 

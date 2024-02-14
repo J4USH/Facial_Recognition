@@ -48,7 +48,7 @@ class LoginApp:
     def button_function(self):
         if (self.entry1.get() == "Agnibha" and self.entry2.get() == "password"):
             self.app.destroy()  # destroy current window and creating new one
-            os.startfile('Homepage.exe')
+            os.startfile('Homepage.py')
            
         else:
             self.l4.configure(text="Wrong Password/Username", fg_color=("red"))

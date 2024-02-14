@@ -10,7 +10,7 @@ import os
 
 def register():
     help_box.destroy()
-    os.startfile('registration_haar.exe')
+    os.startfile('registration_haar.py')
     w.destroy()
     startup()
 
@@ -55,14 +55,14 @@ def enter_register():
 def enter_Attendance():
     w.quit()
     
-    os.startfile('recognition.exe')
+    os.startfile('recognition.py')
     w.destroy()
     startup()
 
 
 def enter_Encoding():
     w.quit()
-    os.startfile('recordManage.exe')
+    os.startfile('recordManage.py')
     w.destroy()
     startup()
     
